@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased text-gray-900 bg-gray-50;
+  }
+}
+
+@layer components {
+  .gradient-bg {
+    @apply bg-gradient-to-br from-indigo-600 to-purple-600;
+  }
+
+  .nav-item-3d {
+    @apply relative;
+    transform-style: preserve-3d;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .nav-item-3d:hover {
+    transform: translateY(-2px) translateZ(0);
+    box-shadow: 
+      0 4px 6px -1px rgb(0 0 0 / 0.05),
+      0 2px 4px -2px rgb(0 0 0 / 0.05);
+  }
+
+  .nav-item-3d::before {
+    content: '';
+    @apply absolute inset-0 rounded-lg bg-gradient-to-r from-indigo-600/10 to-purple-600/10 opacity-0 transition-opacity;
+  }
+
+  .nav-item-3d:hover::before {
+    @apply opacity-100;
+  }
+}
